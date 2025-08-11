@@ -1,8 +1,6 @@
-main {
-  background-color: blueviolet;
+.gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
-
   gap: 10px;
 }
 
@@ -14,8 +12,4 @@ img {
 
 * > body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-header {
-  background-color: aquamarine;
 }

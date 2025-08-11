@@ -15,8 +15,10 @@ var gMeme = {
 
 function getText() {
   text = document.getElementById('user-text').value;
+  textColor = document.getElementById('text-clr').value;
   gMeme.lines.txt = text;
-  return text;
+  gMeme.lines.color = textColor;
+  return gMeme.lines;
 }
 
 function getImageById(id) {

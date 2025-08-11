@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meme Generator</title>
-    <link rel="stylesheet" href="meme/meme-editor.css" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="storage.service.js"></script>
     <script src="meme/meme.contoller.js"></script>
     <script src="meme/meme.service.js"></script>
@@ -13,27 +13,35 @@
 
   <body onload="onInit()">
     <header>
-      Meme Generator
+      <h2 class="logo">Meme Generator</h2>
       <nav>
         <a href="meme-gallery/gallery.html"> Gallery</a>
         <a href="index.html"> Meme-Editor</a>
       </nav>
     </header>
 
-    <main>
+    <main class="Meme-Editor">
       <div class="canvas-container">
         <canvas></canvas>
       </div>
       <div class="console">
         <button onclick="renderImage()">Render</button>
-        <label for="text"></label>
-        <input
-          type="text"
-          name="user-text"
-          id="user-text"
-          oninput="getText(this)"
-        />
-        <button onclick="renderText()">text</button>
+        <div class="text-edits">
+          <label for="text"></label>
+          <input
+            type="text"
+            name="user-text"
+            id="user-text"
+            oninput="getText(this)"
+          />
+          <input
+            type="color"
+            name="text-clr"
+            id="text-clr"
+            oninput="getText(this)"
+          />
+          <button onclick="renderText()">Text</button>
+        </div>
       </div>
     </main>
   </body>

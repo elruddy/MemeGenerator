@@ -1,2 +1,4 @@
-@import 'meme-gallery/gallery.css';
-@import 'meme/meme-editor.css';
+@import url('css/gallery.css');
+@import url('css/meme-editor.css');
+@import url('css/header.css');
+@import url('css/logo.css');

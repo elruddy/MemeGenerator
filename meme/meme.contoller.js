@@ -14,14 +14,15 @@ function renderImage() {
   };
 }
 
-var text;
-function getText() {
-  text = document.getElementById('user-text').value;
-  return text;
-}
+// var text;
+// function getText() {
+//   text = document.getElementById('user-text').value;
+//   return text;
+// }
 
 function renderText() {
   gCtx.font = '30px Arial';
+  gCtx.fillStyle = textColor;
   gCtx.fillText(
     text,
     gElCanvas.width / 3,
@@ -29,4 +30,10 @@ function renderText() {
     gElCanvas.width,
     gElCanvas.height
   );
+}
+
+function createMeme(text, memeId) {
+  gMeme.selectedImgId = memeId;
+  gMeme.selectedLineIdx = 0;
+  gMeme.lines[txt] = text;
 }
