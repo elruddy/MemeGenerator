@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meme Generator</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="consants.js"></script>
     <script src="storage.service.js"></script>
     <script src="meme/meme.contoller.js"></script>
     <script src="meme/meme.service.js"></script>
@@ -22,25 +23,29 @@
 
     <main class="Meme-Editor">
       <div class="canvas-container">
-        <canvas></canvas>
+        <canvas
+          onmousedown="onDown(event)"
+          onmouseup="onUp(event)"
+          onmousemove="onMove(event)"
+          onclick="onCanvasClick(event)"
+        ></canvas>
       </div>
       <div class="console">
-        <button onclick="renderImage()">Render</button>
+        <button onclick="addText()">+</button>
         <div class="text-edits">
           <label for="text"></label>
           <input
             type="text"
             name="user-text"
             id="user-text"
-            oninput="getText(this)"
+            oninput="setText(this)"
           />
           <input
             type="color"
             name="text-clr"
             id="text-clr"
-            oninput="getText(this)"
+            oninput="setText(this)"
           />
-          <button onclick="renderText()">Text</button>
         </div>
       </div>
     </main>

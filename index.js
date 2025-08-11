@@ -1,11 +1,13 @@
 let gElCanvas;
 let gCtx;
+let gLastPos;
 
 function onInit() {
   gElCanvas = document.querySelector('canvas');
   gCtx = gElCanvas.getContext('2d');
   resizeCanvas();
-  console.log(gMeme);
+
+  initGMeme();
   renderImage();
 }
 
