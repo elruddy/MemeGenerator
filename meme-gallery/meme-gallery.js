@@ -10,5 +10,5 @@ function createGallery() {
 
 function chooseMeme(id) {
   saveToStorage('chosenMeme', id);
-  window.location.href = '/index.html';
+  window.location.href = '../index.html';
 }
