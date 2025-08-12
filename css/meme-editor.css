@@ -24,7 +24,40 @@ canvas {
 
 .console {
   padding: 10px;
-  display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.text-edits {
+  gap: 30px;
+  justify-content: center;
+}
+
+#user-text {
+  line-height: 2.5em;
+  font-size: 1.5em;
+  /* background: palegreen; */
+  /* border: 0; */
+  border-radius: 30px;
+  text-align: center;
+}
+
+#text-clr {
+  font-size: 0;
+  width: 0;
+  height: 0;
+  border: 0;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.txtChoice {
+  height: 35px;
+  width: 35px;
+  font-size: 30px;
+  padding: 2px;
+  border: 0;
+  background-color: aquamarine;
 }

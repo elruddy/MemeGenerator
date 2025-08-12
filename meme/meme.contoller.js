@@ -5,7 +5,7 @@ var gMeme = {
   lines: [],
 };
 
-let img;
+var img;
 
 function renderImg() {
   gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width;
@@ -88,6 +88,16 @@ function setText() {
 
   renderText();
 }
+function textSize(operator) {
+  if (operator === '+' && gMeme.lines[gMeme.selectedLineIdx].size < 100) {
+    gMeme.lines[gMeme.selectedLineIdx].size += 10;
+  }
+
+  if (operator === '-' && gMeme.lines[gMeme.selectedLineIdx].size > 10) {
+    gMeme.lines[gMeme.selectedLineIdx].size -= 10;
+  }
+  renderText();
+}
 
 function whatLineClicked(clickedPos) {
   for (var i = 0; i < gMeme.lines.length; i++) {
@@ -165,4 +175,9 @@ function onCanvasClick(ev) {
 
   gMeme.selectedLineIdx = lineIdx;
   renderText();
+}
+
+function onDownload(elLink) {
+  const imgContent = gElCanvas.toDataURL('image/jpeg');
+  elLink.href = imgContent;
 }

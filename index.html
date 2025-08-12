@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meme Generator</title>
     <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
     <script src="consants.js"></script>
     <script src="storage.service.js"></script>
     <script src="meme/meme.contoller.js"></script>
@@ -30,22 +35,62 @@
           onclick="onCanvasClick(event)"
         ></canvas>
       </div>
-      <div class="console">
-        <button onclick="addText()">+</button>
-        <div class="text-edits">
-          <label for="text"></label>
-          <input
-            type="text"
-            name="user-text"
-            id="user-text"
-            oninput="setText(this)"
-          />
-          <input
-            type="color"
-            name="text-clr"
-            id="text-clr"
-            oninput="setText(this)"
-          />
+      <div class="console flex">
+        <input
+          type="text"
+          name="user-text"
+          id="user-text"
+          oninput="setText(this)"
+        />
+        <div class="basic-actions">
+          <button
+            class="material-symbols-outlined txtChoice"
+            onclick="addText()"
+          >
+            add_2
+          </button>
+          <button
+            class="material-symbols-outlined txtChoice"
+            onclick="deleteText()"
+          >
+            delete
+          </button>
+        </div>
+        <div class="text-edits flex">
+          <button
+            class="material-symbols-outlined txtChoice"
+            onclick="textSize('+')"
+          >
+            text_increase
+          </button>
+          <button
+            class="material-symbols-outlined txtChoice"
+            onclick="textSize('-')"
+          >
+            text_decrease
+          </button>
+          <button class="txtChoice">
+            <label for="text-clr" class="material-symbols-outlined">
+              palette
+            </label>
+            <input
+              type="color"
+              name="text-clr"
+              id="text-clr"
+              oninput="setText(this)"
+            />
+          </button>
+        </div>
+        <div class="flex">
+          <a
+            class="material-symbols-outlined txtChoice"
+            href="#"
+            onclick="onDownload(this)"
+            download="my-meme.jpg"
+          >
+            download</a
+          >
+          <a class="material-symbols-outlined txtChoice" href="#"> share</a>
         </div>
       </div>
     </main>
