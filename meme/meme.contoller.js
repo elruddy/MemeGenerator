@@ -6,6 +6,7 @@ var gMeme = {
 };
 
 var img;
+var prevMousePos;
 
 function renderImg() {
   gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width;
@@ -37,9 +38,11 @@ function addText() {
     font: 'Arial',
     color: '#000000',
     posX: gElCanvas.width / 3,
-    posY: gElCanvas.height / 5,
+    posY: gElCanvas.height / (5 + gMeme.lines.length),
   });
+
   gMeme.selectedLineIdx = gMeme.lines.length - 1;
+
   renderText();
 }
 
@@ -48,21 +51,33 @@ function renderText() {
 
   renderImg();
 
-  let idx = 1;
-  for (const line of gMeme.lines) {
+  for (let i = 0; i < gMeme.lines.length; i++) {
+    const line = gMeme.lines[i];
+
     gCtx.font = `${line.size}px ${line.font}`;
     gCtx.fillStyle = line.color;
     line.txtWidth = gCtx.measureText(line.txt).width;
 
+    if (gMeme.selectedLineIdx === i) {
+      gCtx.strokeStyle = 'blue';
+      gCtx.lineWidth = 1;
+      gCtx.beginPath();
+      gCtx.roundRect(
+        line.posX,
+        line.posY,
+        line.txtWidth + line.size,
+        -line.size - (line.size * 3) / 4,
+        12
+      );
+      gCtx.stroke();
+    }
     gCtx.fillText(
       line.txt,
-      line.posX,
-      line.posY,
+      line.posX + line.size / 2,
+      line.posY - line.size / 2,
       gElCanvas.width,
       gElCanvas.height
     );
-
-    idx++;
   }
 
   if (gMeme.selectedLineIdx === -1) {
@@ -102,6 +117,8 @@ function textSize(operator) {
 function whatLineClicked(clickedPos) {
   for (var i = 0; i < gMeme.lines.length; i++) {
     var line = gMeme.lines[i];
+
+    // chceking if clicked within line area
     if (
       clickedPos.x >= line.posX &&
       clickedPos.x <= line.posX + line.txtWidth &&
@@ -135,28 +152,37 @@ function getEvPos(ev) {
 function onDown(ev) {
   //* Get mouse/touch position relative to canvas
   const pos = getEvPos(ev);
+  document.body.style.cursor = 'grabbing';
 
+  // get information if clicked on line and what
   const lineIdx = whatLineClicked(pos);
-
   if (lineIdx === -1) return;
   gMeme.selectedMovableLineIdx = lineIdx;
 }
 
 function onUp(ev) {
   ev.preventDefault();
+  document.body.style.cursor = 'grab';
   gMeme.selectedMovableLineIdx = -1;
+  prevMousePos = null;
 }
 
 function onMove(ev) {
   if (gMeme.selectedMovableLineIdx === -1) return;
-  const pos = getEvPos(ev);
 
-  //* Calculate distance moved from drag start position
-  const dx = pos.x - gMeme.lines[gMeme.selectedMovableLineIdx].posX;
-  const dy = pos.y - gMeme.lines[gMeme.selectedMovableLineIdx].posY;
-  gMeme.lines[gMeme.selectedMovableLineIdx].posX += dx;
-  gMeme.lines[gMeme.selectedMovableLineIdx].posY += dy;
+  const mousePos = getEvPos(ev);
 
+  // if we have a previous position
+  // calculate mouse difference and apply on drawed text position
+  if (prevMousePos) {
+    const dx = mousePos.x - prevMousePos.x;
+    const dy = mousePos.y - prevMousePos.y;
+    gMeme.lines[gMeme.selectedMovableLineIdx].posX += dx;
+    gMeme.lines[gMeme.selectedMovableLineIdx].posY += dy;
+  }
+
+  // set previous position
+  prevMousePos = mousePos;
   //* Redraw the canvas with updated circle position
   renderText();
 }
@@ -168,16 +194,29 @@ function onCanvasClick(ev) {
 
   const lineIdx = whatLineClicked(pos);
 
-  if (lineIdx === -1) {
-    gMeme.selectedLineIdx = -1;
-    return;
-  }
-
   gMeme.selectedLineIdx = lineIdx;
   renderText();
 }
 
-function onDownload(elLink) {
+function onDownloadImg(elLink) {
   const imgContent = gElCanvas.toDataURL('image/jpeg');
   elLink.href = imgContent;
+}
+
+function switchLine() {
+  gMeme.selectedLineIdx++;
+
+  if (gMeme.selectedLineIdx === gMeme.lines.length) {
+    gMeme.selectedLineIdx = 0;
+  }
+
+  console.log(gMeme.selectedLineIdx);
+  renderText();
+}
+
+function deleteText() {
+  if (gMeme.selectedLineIdx === -1) return;
+
+  gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+  renderText();
 }

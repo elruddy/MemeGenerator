@@ -1,5 +1,7 @@
-@import url('css/gallery.css');
-@import url('css/meme-editor.css');
-@import url('css/header.css');
-@import url('css/logo.css');
+@import url('css/COMPONENTS/gallery.css');
+@import url('css/COMPONENTS/header.css');
+@import url('css/COMPONENTS/meme-editor.css');
+@import url('css/COMPONENTS/canvas.css');
+@import url('css/COMPONENTS/logo.css');
 @import url('css/helpers.css');
+@import url('css/SETUP/mq.css');

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meme Generator</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css">
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
       rel="stylesheet"
@@ -18,7 +18,7 @@
   </head>
 
   <body onload="onInit()">
-    <header>
+    <header class="center">
       <h2 class="logo">Meme Generator</h2>
       <nav>
         <a href="meme-gallery/gallery.html"> Gallery</a>
@@ -26,7 +26,7 @@
       </nav>
     </header>
 
-    <main class="Meme-Editor">
+    <main class="meme-editor">
       <div class="canvas-container">
         <canvas
           onmousedown="onDown(event)"
@@ -55,6 +55,14 @@
           >
             delete
           </button>
+          </button>
+          <button
+            class="material-symbols-outlined txtChoice"
+            onclick="switchLine()"
+          >
+            swap_vert
+          </button>
+          
         </div>
         <div class="text-edits flex">
           <button

@@ -1,0 +1,29 @@
+body {
+  margin: 0px;
+  text-align: center;
+}
+
+/*MOBILE*/
+@media (max-width: 650px) {
+  main {
+    display: inline;
+  }
+}
+
+/*DESKTOP*/
+@media (min-width: 700px) {
+  main {
+    display: grid;
+    grid-template-columns: minmax(400px, auto) 2fr;
+  }
+
+  header {
+    gap: 200px;
+  }
+
+  .console {
+    padding: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+}

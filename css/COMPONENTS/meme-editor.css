@@ -1,0 +1,39 @@
+.meme-editor {
+  margin: 25px;
+  height: 70vh;
+}
+
+.console {
+  border: solid green;
+}
+
+.text-edits {
+  gap: 30px;
+  justify-content: center;
+}
+
+#user-text {
+  line-height: 2.5em;
+  font-size: 1.5em;
+  max-width: 500px;
+  /* background: palegreen; */
+  /* border: 0; */
+  border-radius: 30px;
+  text-align: center;
+}
+
+#text-clr {
+  font-size: 0;
+  width: 0;
+  height: 0;
+  border: 0;
+}
+
+.txtChoice {
+  height: 35px;
+  width: 35px;
+  font-size: 30px;
+  padding: 2px;
+  border: 0;
+  background-color: aquamarine;
+}
