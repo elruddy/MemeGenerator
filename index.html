@@ -19,7 +19,7 @@
 
   <body onload="onInit()">
     <header class="center">
-      <h2 class="logo">Meme Generator</h2>
+      <h2 class="logo fancy">Meme Generator</h2>
       <nav>
         <a href="meme-gallery/gallery.html"> Gallery</a>
         <a href="index.html"> Meme-Editor</a>
@@ -77,6 +77,28 @@
           >
             text_decrease
           </button>
+           <button
+            id="alignLeft"
+            class="material-symbols-outlined txtChoice"
+            onclick="textAlign('L')"
+          >
+            format_align_left
+          </button>
+          <button
+            id="alignCenter"
+            class="material-symbols-outlined txtChoice"
+            onclick="textAlign('C')"
+          >
+            format_align_center
+          </button>
+            <button
+            id="alignRight"
+            class="material-symbols-outlined txtChoice"
+            onclick="textAlign('R')"
+          >
+            format_align_right
+          </button>
+
           <button class="txtChoice">
             <label for="text-clr" class="material-symbols-outlined">
               palette
@@ -89,16 +111,16 @@
             />
           </button>
         </div>
-        <div class="flex">
+        <div class="shares flex ">
           <a
-            class="material-symbols-outlined txtChoice"
+            class="link" 
             href="#"
             onclick="onDownload(this)"
             download="my-meme.jpg"
           >
             download</a
           >
-          <a class="material-symbols-outlined txtChoice" href="#"> share</a>
+          <a  class="link" href="#"> share</a>
         </div>
       </div>
     </main>

@@ -1,7 +1,17 @@
+@font-face {
+  font-family: 'Rocher';
+  src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
+}
+
+@font-palette-values --Purples {
+  font-family: Rocher;
+  base-palette: 6;
+}
 .logo {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Rocher';
   justify-self: left;
-  font-weight: 900;
+  font-size: 2em;
+  font-weight: 500;
   padding-inline: 20px;
+  font-palette: --Purples;
 }

@@ -37,6 +37,7 @@ function addText() {
     size: 20,
     font: 'Arial',
     color: '#000000',
+    //align: 'left',
     posX: gElCanvas.width / 3,
     posY: gElCanvas.height / (5 + gMeme.lines.length),
   });
@@ -56,10 +57,11 @@ function renderText() {
 
     gCtx.font = `${line.size}px ${line.font}`;
     gCtx.fillStyle = line.color;
+    //gCtx.textAlign = line.align;
     line.txtWidth = gCtx.measureText(line.txt).width;
 
     if (gMeme.selectedLineIdx === i) {
-      gCtx.strokeStyle = 'blue';
+      gCtx.strokeStyle = '#6a4884';
       gCtx.lineWidth = 1;
       gCtx.beginPath();
       gCtx.roundRect(
@@ -113,6 +115,13 @@ function textSize(operator) {
   }
   renderText();
 }
+
+//function textAlign(dir) {
+//if (dir === 'L') gMeme.lines[gMeme.selectedLineIdx].align = 'left';
+//if (dir === 'C') gMeme.lines[gMeme.selectedLineIdx].align = 'center';
+//if (dir === 'R') gMeme.lines[gMeme.selectedLineIdx].align = 'right';
+// renderText();
+//}
 
 function whatLineClicked(clickedPos) {
   for (var i = 0; i < gMeme.lines.length; i++) {

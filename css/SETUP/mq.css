@@ -1,12 +1,16 @@
-body {
-  margin: 0px;
-  text-align: center;
-}
-
 /*MOBILE*/
-@media (max-width: 650px) {
+@media (max-width: 699px) {
   main {
-    display: inline;
+    display: block;
+  }
+
+  .console {
+    flex-direction: column;
+    margin-block: 25px;
+    gap: 10px;
+  }
+  div.console > * {
+    flex-direction: row;
   }
 }
 

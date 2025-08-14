@@ -1,15 +1,20 @@
 .meme-editor {
   margin: 25px;
-  height: 70vh;
+  border: solid var(--clr-drak);
+  border-radius: var(--borderR);
+  padding: 10px;
+  gap: 10px;
+  background-color: var(--white);
 }
 
 .console {
-  border: solid green;
+  max-height: 1fr;
 }
-
-.text-edits {
-  gap: 30px;
+.console > * {
+  display: flex;
+  gap: 10px;
   justify-content: center;
+  justify-items: center;
 }
 
 #user-text {
@@ -18,7 +23,8 @@
   max-width: 500px;
   /* background: palegreen; */
   /* border: 0; */
-  border-radius: 30px;
+  border-radius: var(--borderR);
+  border: solid var(--clr-drak);
   text-align: center;
 }
 
@@ -35,5 +41,30 @@
   font-size: 30px;
   padding: 2px;
   border: 0;
-  background-color: aquamarine;
+  background-color: var(--clr-primary);
+}
+
+.textChoice:hover {
+  color: var(--clr-drak);
+}
+
+.shares a:link {
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.shares a:visited {
+  color: var(--clr-drak1);
+}
+.shares a:hover {
+  color: var(--white);
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.link {
+  width: auto;
+  background-color: var(--clr-primary);
+  padding: 10px;
 }
