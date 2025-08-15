@@ -168,20 +168,24 @@ function whatLineClicked(clickedPos) {
 }
 
 function getEvPos(ev) {
+  const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend'];
   //* Gets the first touch point (could be multiple in touch event)
   let pos = {
     x: ev.offsetX,
     y: ev.offsetY,
   };
-  ev.preventDefault();
-  /*
-   * Calculate touch coordinates relative to canvas
-   * position by subtracting canvas offsets (left and top) from page coordinates
-   */
-  pos = {
-    x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-    y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-  };
+
+  if (TOUCH_EVS.includes(ev.type)) {
+    ev.preventDefault();
+    /*
+     * Calculate touch coordinates relative to canvas
+     * position by subtracting canvas offsets (left and top) from page coordinates
+     */
+    pos = {
+      x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+      y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+    };
+  }
   return pos;
 }
 
