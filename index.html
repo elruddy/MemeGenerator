@@ -41,8 +41,11 @@
       <div class="canvas-container">
         <canvas
           onmousedown="onDown(event)"
+          touchstart="onDown(event)"
           onmouseup="onUp(event)"
+          touchcancel="onUp(event)"
           onmousemove="onMove(event)"
+          touchmove="onMove(event)"
           onclick="onCanvasClick(event)"
         ></canvas>
       </div>
