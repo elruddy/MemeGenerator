@@ -1,21 +1,28 @@
 header {
+  display: flex;
   background-color: var(--white);
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
-  display: flex;
+  height: 90px;
   border-radius: 50px;
   margin: 10px;
 }
 
-header a {
+nav {
+}
+nav a {
   padding: 20px;
   font-size: 1.5rem;
 }
 
-header a:link {
+nav a:link {
   text-decoration: none;
 }
 
-header a:visited {
-  color: blue;
+nav a:visited {
+  color: var(--clr-drak);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
 }

@@ -20,6 +20,7 @@
 #user-text {
   line-height: 2.5em;
   font-size: 1.5em;
+  width: 100%;
   max-width: 500px;
   /* background: palegreen; */
   /* border: 0; */
@@ -44,8 +45,8 @@
   background-color: var(--clr-primary);
 }
 
-.textChoice:hover {
-  color: var(--clr-drak);
+.txtChoice:not([disabled]):hover {
+  color: var(--white);
 }
 
 .shares a:link {

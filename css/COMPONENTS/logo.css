@@ -12,6 +12,8 @@
   justify-self: left;
   font-size: 2em;
   font-weight: 500;
+
+  width: 250px;
   padding-inline: 20px;
   font-palette: --Purples;
 }

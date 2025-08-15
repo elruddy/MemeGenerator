@@ -1,5 +1,5 @@
 /*MOBILE*/
-@media (max-width: 699px) {
+@media (max-width: 600px) {
   main {
     display: block;
   }
@@ -14,11 +14,25 @@
   }
 }
 
+@media (min-width: 600px) {
+  main {
+    display: block;
+  }
+  .console {
+    flex-direction: column;
+    margin-block: 25px;
+    gap: 10px;
+  }
+  div.console > * {
+    flex-direction: row;
+  }
+}
+
 /*DESKTOP*/
-@media (min-width: 700px) {
+@media (min-width: 750px) {
   main {
     display: grid;
-    grid-template-columns: minmax(400px, auto) 2fr;
+    grid-template-columns: minmax(400px, auto) 1fr;
   }
 
   header {

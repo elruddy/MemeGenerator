@@ -240,13 +240,14 @@ function onDownloadImg(elLink) {
 }
 
 function switchLine() {
+  if (gMeme.lines.length === 0) return;
+
   gMeme.selectedLineIdx++;
 
   if (gMeme.selectedLineIdx === gMeme.lines.length) {
     gMeme.selectedLineIdx = 0;
   }
 
-  console.log(gMeme.selectedLineIdx);
   renderText();
 }
 
@@ -256,4 +257,32 @@ function deleteText() {
   gMeme.lines.splice(gMeme.selectedLineIdx, 1);
   gMeme.selectedLineIdx = -1;
   renderText();
+}
+
+function onShareImg(ev) {
+  ev.preventDefault();
+  const canvasData = gElCanvas.toDataURL('image/jpeg');
+  function onSuccess(uploadedImgUrl) {
+    const url = encodeURIComponent(uploadedImgUrl);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&t=${url}`);
+  }
+  uploadImg(canvasData, onSuccess);
+}
+
+async function uploadImg(imgData, onSuccess) {
+  const CLOUD_NAME = 'webify';
+  const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
+  const formData = new FormData();
+  formData.append('file', imgData);
+  formData.append('upload_preset', 'webify');
+  try {
+    const res = await fetch(UPLOAD_URL, {
+      method: 'POST',
+      body: formData,
+    });
+    const data = await res.json();
+    onSuccess(data.secure_url);
+  } catch (err) {
+    console.log(err);
+  }
 }

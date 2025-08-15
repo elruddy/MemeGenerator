@@ -21,8 +21,10 @@
     <header class="center">
       <h2 class="logo fancy">Meme Generator</h2>
       <nav>
-        <a href="meme-gallery/gallery.html"> Gallery</a>
-        <a href="index.html"> Meme-Editor</a>
+        <ul>
+        <li><a href="meme-gallery/gallery.html"> Gallery</a></li>
+         <li><a href="index.html"> Meme-Editor</a></li>
+        </ul>
       </nav>
     </header>
 
@@ -36,13 +38,14 @@
         ></canvas>
       </div>
       <div class="console flex">
+        <div>
         <input
           disabled
           type="text"
           name="user-text"
           id="user-text"
           oninput="setText()"
-        />
+        /></div>
         <div class="basic-actions">
           <button
             class="material-symbols-outlined txtChoice"
@@ -131,7 +134,7 @@
           >
             download</a
           >
-          <a  class="link" href="#"> share</a>
+          <a  class="link" href="#" onclick="onShareImg(event)"> share </a>
         </div>
       </div>
     </main>
