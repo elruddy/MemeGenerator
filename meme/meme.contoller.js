@@ -17,7 +17,7 @@ function initGMeme() {
   const imgId = loadFromStorage(G_IMG_ID);
 
   if (!imgId) {
-    window.location.href = '../meme-gallery/gallery.html';
+    window.location.href = '/meme-gallery/gallery.html';
   }
 
   gMeme.selectedImgId = imgId;
