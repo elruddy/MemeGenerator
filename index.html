@@ -20,11 +20,20 @@
   <body onload="onInit()">
     <header class="center">
       <h2 class="logo fancy">Meme Generator</h2>
-      <nav>
+
+      <button id="open-sidebar-button"  class="material-symbols-outlined" onclick="openSideBar()">
+        menu
+      </button>
+
+
+      <nav id="nav">
         <ul>
-        <li><a href="meme-gallery/gallery.html"> Gallery</a></li>
-         <li><a href="index.html"> Meme-Editor</a></li>
+          <li><button id="close-sidebar-button" onclick="closeSideBar()"  class="material-symbols-outlined">
+            close </button></li>
+          <li><a href="meme-gallery/gallery.html"> Gallery</a></li>
+          <li><a href="index.html"> Meme-Editor</a></li>
         </ul>
+
       </nav>
     </header>
 

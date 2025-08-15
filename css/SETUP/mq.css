@@ -1,20 +1,5 @@
 /*MOBILE*/
-@media (max-width: 600px) {
-  main {
-    display: block;
-  }
-
-  .console {
-    flex-direction: column;
-    margin-block: 25px;
-    gap: 10px;
-  }
-  div.console > * {
-    flex-direction: row;
-  }
-}
-
-@media (min-width: 600px) {
+@media (max-width: 749px) {
   main {
     display: block;
   }
@@ -25,6 +10,38 @@
   }
   div.console > * {
     flex-direction: row;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: min(12em, 100%);
+    z-index: 10;
+    background-color: var(--clr-primary-2);
+    transition: right 300ms ease-out;
+  }
+  nav.show {
+    right: 0;
+  }
+
+  nav ul {
+    width: 100%;
+    flex-direction: column;
+    padding: 0;
+    text-align: left;
+    gap: 20px;
+  }
+
+  nav a {
+    padding: 20px;
+    justify-self: right;
+  }
+
+  #close-sidebar-button,
+  #open-sidebar-button {
+    display: block;
   }
 }
 
@@ -37,6 +54,10 @@
 
   header {
     gap: 200px;
+  }
+
+  nav ul {
+    padding: 0;
   }
 
   .console {

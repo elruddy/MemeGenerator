@@ -12,3 +12,18 @@
   object-fit: cover;
   border-radius: var(--borderR);
 }
+
+.keywords-container {
+  display: flex;
+  gap: 8px;
+  margin-inline: 20px;
+  justify-content: center;
+}
+
+.key {
+  color: var(--white);
+}
+
+.picked {
+  color: var(--clr-primary);
+}
