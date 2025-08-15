@@ -80,3 +80,11 @@ function chooseImg(id) {
   saveToStorage(G_IMG_ID, id);
   window.location.href = '../index.html';
 }
+
+function closeSideBar() {
+  nav.classList.remove('show');
+}
+
+function openSideBar() {
+  nav.classList.add('show');
+}
