@@ -8,13 +8,18 @@ var gMeme = {
 var img;
 var prevMousePos;
 
-function renderImg() {
+function drawImage() {
   gElCanvas.height = (img.naturalHeight / img.naturalWidth) * gElCanvas.width;
   gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height);
 }
 
 function initGMeme() {
   const imgId = loadFromStorage(G_IMG_ID);
+
+  if (!imgId) {
+    window.location.href = '../meme-gallery/gallery.html';
+  }
+
   gMeme.selectedImgId = imgId;
   gMeme.selectedLineIdx = -1;
   gMeme.lines = [];
@@ -27,7 +32,7 @@ function renderImage() {
   img = new Image();
   img.src = 'meme/' + meme.url;
   img.onload = () => {
-    renderImg(img);
+    drawImage(img);
   };
 }
 
@@ -50,17 +55,18 @@ function addText() {
 function renderText() {
   gCtx.clearRect(0, 0, gElCanvas.width, gElCanvas.height);
 
-  renderImg();
+  drawImage();
 
   for (let i = 0; i < gMeme.lines.length; i++) {
     const line = gMeme.lines[i];
 
     gCtx.font = `${line.size}px ${line.font}`;
     gCtx.fillStyle = line.color;
-    //gCtx.textAlign = line.align;
     line.txtWidth = gCtx.measureText(line.txt).width;
 
     if (gMeme.selectedLineIdx === i) {
+      controlButtonsToggle(false);
+
       gCtx.strokeStyle = '#6a4884';
       gCtx.lineWidth = 1;
       gCtx.beginPath();
@@ -83,6 +89,7 @@ function renderText() {
   }
 
   if (gMeme.selectedLineIdx === -1) {
+    controlButtonsToggle(true);
     document.getElementById('user-text').value = '';
     document.getElementById('text-clr').value = '#000000';
 
@@ -97,6 +104,17 @@ function renderText() {
   document.getElementById('user-text').focus();
 }
 
+function controlButtonsToggle(active) {
+  document.getElementById('delete-text').disabled = active;
+  document.getElementById('user-text').disabled = active;
+  document.getElementById('text-increase').disabled = active;
+  document.getElementById('text-decrease').disabled = active;
+  document.getElementById('color-choice').disabled = active;
+  document.getElementById('alignLeft').disabled = active;
+  document.getElementById('alignCenter').disabled = active;
+  document.getElementById('alignRight').disabled = active;
+}
+
 function setText() {
   gMeme.lines[gMeme.selectedLineIdx].txt =
     document.getElementById('user-text').value;
@@ -105,6 +123,7 @@ function setText() {
 
   renderText();
 }
+
 function textSize(operator) {
   if (operator === '+' && gMeme.lines[gMeme.selectedLineIdx].size < 100) {
     gMeme.lines[gMeme.selectedLineIdx].size += 10;
@@ -116,12 +135,20 @@ function textSize(operator) {
   renderText();
 }
 
-//function textAlign(dir) {
-//if (dir === 'L') gMeme.lines[gMeme.selectedLineIdx].align = 'left';
-//if (dir === 'C') gMeme.lines[gMeme.selectedLineIdx].align = 'center';
-//if (dir === 'R') gMeme.lines[gMeme.selectedLineIdx].align = 'right';
-// renderText();
-//}
+function textAlign(dir) {
+  if (gMeme.selectedLineIdx === -1) return;
+  const textBoxSize =
+    gMeme.lines[gMeme.selectedLineIdx].txtWidth +
+    gMeme.lines[gMeme.selectedLineIdx].size;
+
+  if (dir === 'L') gMeme.lines[gMeme.selectedLineIdx].posX = 0;
+  if (dir === 'C')
+    gMeme.lines[gMeme.selectedLineIdx].posX =
+      gElCanvas.width / 2 - textBoxSize / 2;
+  if (dir === 'R')
+    gMeme.lines[gMeme.selectedLineIdx].posX = gElCanvas.width - textBoxSize;
+  renderText();
+}
 
 function whatLineClicked(clickedPos) {
   for (var i = 0; i < gMeme.lines.length; i++) {
@@ -227,5 +254,6 @@ function deleteText() {
   if (gMeme.selectedLineIdx === -1) return;
 
   gMeme.lines.splice(gMeme.selectedLineIdx, 1);
+  gMeme.selectedLineIdx = -1;
   renderText();
 }

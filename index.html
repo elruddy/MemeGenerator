@@ -37,10 +37,11 @@
       </div>
       <div class="console flex">
         <input
+          disabled
           type="text"
           name="user-text"
           id="user-text"
-          oninput="setText(this)"
+          oninput="setText()"
         />
         <div class="basic-actions">
           <button
@@ -51,7 +52,10 @@
           </button>
           <button
             class="material-symbols-outlined txtChoice"
+            disabled
             onclick="deleteText()"
+            id="delete-text"
+            disabled
           >
             delete
           </button>
@@ -68,16 +72,21 @@
           <button
             class="material-symbols-outlined txtChoice"
             onclick="textSize('+')"
+            id="text-decrease"
+            disabled
           >
             text_increase
           </button>
           <button
             class="material-symbols-outlined txtChoice"
             onclick="textSize('-')"
+            id="text-increase"
+            disabled
           >
             text_decrease
           </button>
            <button
+            disabled
             id="alignLeft"
             class="material-symbols-outlined txtChoice"
             onclick="textAlign('L')"
@@ -85,6 +94,7 @@
             format_align_left
           </button>
           <button
+            disabled
             id="alignCenter"
             class="material-symbols-outlined txtChoice"
             onclick="textAlign('C')"
@@ -92,6 +102,7 @@
             format_align_center
           </button>
             <button
+            disabled
             id="alignRight"
             class="material-symbols-outlined txtChoice"
             onclick="textAlign('R')"
@@ -99,7 +110,7 @@
             format_align_right
           </button>
 
-          <button class="txtChoice">
+          <button class="txtChoice" id="color-choice" disabled>
             <label for="text-clr" class="material-symbols-outlined">
               palette
             </label>
@@ -107,7 +118,7 @@
               type="color"
               name="text-clr"
               id="text-clr"
-              oninput="setText(this)"
+              oninput="setText()"
             />
           </button>
         </div>
