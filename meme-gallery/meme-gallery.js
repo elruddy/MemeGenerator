@@ -42,7 +42,7 @@ function createPictureGallery() {
   let keyWordsFilter = [];
 
   if (userKeyWords.length === 0) keyWordsFilter = Object.keys(gKeyWords);
-  else keyWordsFilter = [...userKeyWords];
+  else keyWordsFilter = userKeyWords;
 
   const images = getImages(keyWordsFilter);
   let innerHTML = '';
