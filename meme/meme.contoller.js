@@ -42,7 +42,6 @@ function addText() {
     size: 20,
     font: 'Arial',
     color: '#000000',
-    //align: 'left',
     posX: gElCanvas.width / 3,
     posY: gElCanvas.height / (5 + gMeme.lines.length),
   });
@@ -101,7 +100,7 @@ function renderText() {
     gMeme.lines[gMeme.selectedLineIdx].txt;
   document.getElementById('text-clr').value =
     gMeme.lines[gMeme.selectedLineIdx].color;
-  // document.getElementById('user-text').focus();
+  document.getElementById('user-text').focus();
 }
 
 function controlButtonsToggle(active) {
@@ -208,8 +207,6 @@ function onUp(ev) {
 }
 
 function onMove(ev) {
-  ev.preventDefault();
-
   if (gMeme.selectedMovableLineIdx === -1) return;
 
   const mousePos = getEvPos(ev);
