@@ -208,6 +208,8 @@ function onUp(ev) {
 }
 
 function onMove(ev) {
+  ev.preventDefault();
+
   if (gMeme.selectedMovableLineIdx === -1) return;
 
   const mousePos = getEvPos(ev);
