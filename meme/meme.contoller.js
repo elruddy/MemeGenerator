@@ -100,7 +100,7 @@ function renderText() {
   document.getElementById('user-text').value =
     gMeme.lines[gMeme.selectedLineIdx].txt;
   document.getElementById('text-clr').value =
-  //   gMeme.lines[gMeme.selectedLineIdx].color;
+    gMeme.lines[gMeme.selectedLineIdx].color;
   // document.getElementById('user-text').focus();
 }
 
