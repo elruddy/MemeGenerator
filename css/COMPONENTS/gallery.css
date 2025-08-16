@@ -1,8 +1,11 @@
+body {
+  text-align: center;
+}
 .gallery {
   display: grid;
   grid-auto-flow: dense;
   grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-  gap: 10px;
+  gap: 30px;
   margin: 10px;
 }
 

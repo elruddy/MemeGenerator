@@ -11,12 +11,12 @@
     <script src="../consants.js"></script>
     <script src="../storage.service.js"></script>
     <script src="../meme/meme.service.js"></script>
-    <script src="meme-gallery.js"></script>
+    <script src="saved-memes.controller.js"></script>
     <script src="../index.js"></script>
 
-    <title>Gallery</title>
+    <title>Saved Memes</title>
   </head>
-  <body onload="createGallery()">
+  <body onload="initSavedMemes()">
     <header class="center">
       <h2 class="logo fancy">Meme Generator</h2>
 
@@ -39,13 +39,12 @@
               close
             </button>
           </li>
-          <li><a href="#"> Gallery</a></li>
+          <li><a href="../meme-gallery/gallery.html"> Gallery</a></li>
           <li><a href="../index.html"> Meme-Editor</a></li>
-          <li><a href="../saved-memes/saved-memes.html"> Saved Memes</a></li>
+          <li><a href="#"> Saved Memes</a></li>
         </ul>
       </nav>
     </header>
-    <div id="keywords"></div>
-    <main class="gallery" id="gallery"></main>
+    <main class="saved-memes" id="saved-memes"></main>
   </body>
 </html>

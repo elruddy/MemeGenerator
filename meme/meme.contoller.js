@@ -14,15 +14,18 @@ function drawImage() {
 }
 
 function initGMeme() {
-  const imgId = loadFromStorage(G_IMG_ID);
+  const meme = loadFromStorage(G_MEME);
 
-  if (!imgId) {
+  if (!meme || !meme.selectedImgId) {
     window.location.href = 'meme-gallery/gallery.html';
   }
 
-  gMeme.selectedImgId = imgId;
+  gMeme.selectedImgId = meme.selectedImgId;
   gMeme.selectedLineIdx = -1;
+  gMeme.selectedMovableLineIdx = -1;
   gMeme.lines = [];
+
+  if (meme.lines) gMeme.lines = meme.lines;
 }
 
 function renderImage() {
@@ -33,6 +36,7 @@ function renderImage() {
   img.src = 'meme/' + meme.url;
   img.onload = () => {
     drawImage(img);
+    renderText();
   };
 }
 
@@ -288,4 +292,16 @@ async function uploadImg(imgData, onSuccess) {
   } catch (err) {
     console.log(err);
   }
+}
+
+function saveMeme() {
+  let savedMemes = loadFromStorage(G_SAVED_MEMES);
+
+  if (!savedMemes) savedMemes = [];
+
+  savedMemes.push(gMeme);
+
+  saveToStorage(G_SAVED_MEMES, savedMemes);
+
+  alert('Saved meme!');
 }

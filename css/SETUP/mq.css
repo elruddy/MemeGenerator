@@ -52,10 +52,6 @@
     grid-template-columns: minmax(400px, auto) 1fr;
   }
 
-  header {
-    gap: 200px;
-  }
-
   nav ul {
     padding: 0;
   }

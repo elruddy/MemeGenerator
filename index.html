@@ -32,6 +32,7 @@
             close </button></li>
           <li><a href="meme-gallery/gallery.html"> Gallery</a></li>
           <li><a href="index.html"> Meme-Editor</a></li>
+          <li><a href="saved-memes/saved-memes.html"> Saved Memes</a></li>
         </ul>
 
       </nav>
@@ -146,7 +147,14 @@
           >
             download</a
           >
-          <a  class="link" href="#" onclick="onShareImg(event)"> share </a>
+          <a class="link" href="#" onclick="onShareImg(event)"> share </a>
+
+            <button
+            class="material-symbols-outlined txtChoice"
+            onclick="saveMeme()"
+          >
+            archive
+          </button>
         </div>
       </div>
     </main>

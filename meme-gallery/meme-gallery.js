@@ -77,14 +77,8 @@ function chooseImg(id) {
 
   saveToStorage(G_KEY_WORDS, gKeyWords);
 
-  saveToStorage(G_IMG_ID, id);
+  const meme = { selectedImgId: id, lines: [] };
+
+  saveToStorage(G_MEME, meme);
   window.location.href = '../index.html';
-}
-
-function closeSideBar() {
-  nav.classList.remove('show');
-}
-
-function openSideBar() {
-  nav.classList.add('show');
 }
